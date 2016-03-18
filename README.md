@@ -21,7 +21,15 @@
 >CArchive(CFile *pFile, UINT nMode, int nBufSize = 4096, void* lpBuf=NULL);
 >nMode:     CArchive::load 加载数据     CArchive::stroe 保存数据
 
+使一个类可串行化， 可由以下五个步骤实现：
+*   从CObject派生类
+*   重写Serialize成员函数
+*   使用DECLARE_SERIAL宏（类中声明）。  声明形式： DELCARE_SERIAL(class_name)
+*   定义不带参数的构造函数
+*   为类在实现文件中使用IMPLEMENT_SERIAL宏。 声明形式：IMPLEMENT_SERIAL(class_name, base_class_name, wSchema)
 
+
+##序列化支持
 C:          序列化与反序列化库  https://github.com/troydhanson/tpl
 Python:     Python序列化与反序列化Module,  Pickle、CPickle
 C#:         .NET框架提供了两种种串行化的方式：1、是使用BinaryFormatter进行串行化；2、使用XmlSerializer进行串行化。
